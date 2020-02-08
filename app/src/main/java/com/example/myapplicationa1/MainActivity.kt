@@ -18,13 +18,18 @@ class MainActivity : AppCompatActivity(),TestRecyclerClickListener {
         val listItem= arrayListOf(" Name","Family","Gender","Nationality","Setting","....","....","....","....","....")
 
         recycler.layoutManager = LinearLayoutManager(this)
-        val adapter=ListAdapter(listItem,this)
-        recycler.adapter=adapter
+
 //        val button1 = button1
         button1.setOnClickListener()
         {
             drawerLayout.openDrawer(GravityCompat.START)
         }
+        val clickListener:(String)->Unit={
+            Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+        }
+        val adapter=ListAdapter(listItem,this)
+        recycler.adapter=adapter
+
     }
     override fun onClick(name: String?) {
         Toast.makeText(this,name,Toast.LENGTH_SHORT).show()
